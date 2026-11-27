@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#475569"/></marker></defs>
+<rect width="900" height="560" fill="#f8fafc"/>
+<text x="450" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">Text-to-SQL with Azure AI Search RAG - Architecture</text>
+<rect x="20" y="60" width="860" height="170" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="35" y="82" font-weight="bold" fill="#1d4ed8">OFFLINE: Indexing pipeline (embedding notebook)</text>
+<rect x="40" y="100" width="150" height="60" rx="8" fill="#fff" stroke="#3b82f6"/><text x="115" y="125" text-anchor="middle">Schema docs</text><text x="115" y="143" text-anchor="middle" font-size="11" fill="#64748b">tables, columns, tags, synonyms</text>
+<rect x="40" y="170" width="150" height="48" rx="8" fill="#fff" stroke="#3b82f6"/><text x="115" y="192" text-anchor="middle">Example Q&amp;A pairs</text><text x="115" y="208" text-anchor="middle" font-size="11" fill="#64748b">query_desc + sql_query</text>
+<rect x="260" y="100" width="190" height="60" rx="8" fill="#fff" stroke="#8b5cf6"/><text x="355" y="125" text-anchor="middle">Azure OpenAI</text><text x="355" y="143" text-anchor="middle" font-size="11" fill="#64748b">text-embedding-ada-002 (1536-d)</text>
+<rect x="520" y="95" width="340" height="60" rx="8" fill="#fff" stroke="#0ea5e9"/><text x="690" y="120" text-anchor="middle">schema_index (vector + keyword)</text><text x="690" y="138" text-anchor="middle" font-size="11" fill="#64748b">HNSW on content_vector</text>
+<rect x="520" y="165" width="340" height="55" rx="8" fill="#fff" stroke="#0ea5e9"/><text x="690" y="190" text-anchor="middle">query_index (keyword / BM25)</text><text x="690" y="207" text-anchor="middle" font-size="11" fill="#64748b">Azure AI Search</text>
+<path d="M190 130 H258" stroke="#475569" marker-end="url(#a)" fill="none"/>
+<path d="M450 130 H518" stroke="#475569" marker-end="url(#a)" fill="none"/>
+<path d="M190 194 H518" stroke="#475569" marker-end="url(#a)" fill="none"/>
+<rect x="20" y="250" width="860" height="295" rx="10" fill="#f0fdf4" stroke="#86efac"/>
+<text x="35" y="272" font-weight="bold" fill="#15803d">ONLINE: Retrieval + Generation (retrieval notebook)</text>
+<rect x="40" y="300" width="140" height="55" rx="8" fill="#fff" stroke="#16a34a"/><text x="110" y="324" text-anchor="middle">User question</text><text x="110" y="341" text-anchor="middle" font-size="11" fill="#64748b">natural language</text>
+<rect x="250" y="285" width="190" height="50" rx="8" fill="#fff" stroke="#8b5cf6"/><text x="345" y="307" text-anchor="middle">Embed question</text><text x="345" y="324" text-anchor="middle" font-size="11" fill="#64748b">ada-002</text>
+<rect x="250" y="350" width="190" height="50" rx="8" fill="#fff" stroke="#0ea5e9"/><text x="345" y="372" text-anchor="middle">Keyword search</text><text x="345" y="389" text-anchor="middle" font-size="11" fill="#64748b">on query_desc, top 3</text>
+<rect x="500" y="285" width="190" height="50" rx="8" fill="#fff" stroke="#0ea5e9"/><text x="595" y="307" text-anchor="middle">Vector search</text><text x="595" y="324" text-anchor="middle" font-size="11" fill="#64748b">schema_index, top 5</text>
+<rect x="500" y="350" width="190" height="50" rx="8" fill="#fff" stroke="#0ea5e9"/><text x="595" y="372" text-anchor="middle">Similar SQL examples</text><text x="595" y="389" text-anchor="middle" font-size="11" fill="#64748b">query_index results</text>
+<rect x="250" y="440" width="440" height="50" rx="8" fill="#fff" stroke="#f59e0b"/><text x="470" y="462" text-anchor="middle">Prompt = system_prompt + schema + examples + question</text><text x="470" y="479" text-anchor="middle" font-size="11" fill="#64748b">few-shot RAG context</text>
+<rect x="730" y="425" width="130" height="80" rx="8" fill="#fff" stroke="#ef4444"/><text x="795" y="453" text-anchor="middle">Groq LLM</text><text x="795" y="471" text-anchor="middle" font-size="11" fill="#64748b">llama-3.3-70b</text><text x="795" y="488" text-anchor="middle" font-size="11" fill="#64748b">-versatile</text>
+<text x="795" y="530" text-anchor="middle" font-weight="bold" fill="#b91c1c">Generated SQL</text>
+<path d="M180 322 L248 312" stroke="#475569" marker-end="url(#a)" fill="none"/>
+<path d="M180 335 L248 372" stroke="#475569" marker-end="url(#a)" fill="none"/>
+<path d="M440 310 H498" stroke="#475569" marker-end="url(#a)" fill="none"/>
+<path d="M440 375 H498" stroke="#475569" marker-end="url(#a)" fill="none"/>
+<path d="M595 335 L520 438" stroke="#475569" marker-end="url(#a)" fill="none"/>
+<path d="M595 400 L560 438" stroke="#475569" marker-end="url(#a)" fill="none"/>
+<path d="M690 465 H728" stroke="#475569" marker-end="url(#a)" fill="none"/>
+<path d="M795 505 V515" stroke="#475569" marker-end="url(#a)" fill="none"/>
+</svg>

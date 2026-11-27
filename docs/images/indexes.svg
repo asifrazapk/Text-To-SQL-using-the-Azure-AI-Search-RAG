@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+<rect width="900" height="380" fill="#f8fafc"/>
+<text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">Azure AI Search index schemas</text>
+<rect x="30" y="50" width="400" height="300" rx="8" fill="#fff" stroke="#0ea5e9"/><rect x="30" y="50" width="400" height="32" rx="8" fill="#0ea5e9"/>
+<text x="230" y="72" text-anchor="middle" fill="#fff" font-weight="bold">schema_index (embedding notebook)</text>
+<g fill="#1e293b"><text x="45" y="105">id : String (key)</text><text x="45" y="130">table_name : String, searchable (standard.lucene)</text><text x="45" y="155">description : String, searchable</text><text x="45" y="180">schema_metadata : String, searchable</text><text x="45" y="205">tags : Collection(String), searchable + filterable</text><text x="45" y="230">synonyms : Collection(String), searchable</text><text x="45" y="255" font-weight="bold" fill="#7c3aed">content_vector : Collection(Single) 1536-d</text>
+<text x="45" y="285" font-size="12" fill="#64748b">Vector profile: my-vector-config</text><text x="45" y="305" font-size="12" fill="#64748b">Algorithm: HNSW (my-algorithms-config)</text><text x="45" y="325" font-size="12" fill="#64748b">Docs: employee, department, salary, project ...</text></g>
+<rect x="470" y="50" width="400" height="170" rx="8" fill="#fff" stroke="#16a34a"/><rect x="470" y="50" width="400" height="32" rx="8" fill="#16a34a"/>
+<text x="670" y="72" text-anchor="middle" fill="#fff" font-weight="bold">query_index (all notebooks)</text>
+<g fill="#1e293b"><text x="485" y="105">id : String (key)</text><text x="485" y="130">query_desc : String, searchable (BM25)</text><text x="485" y="155">sql_query : String (stored SQL)</text><text x="485" y="185" font-size="12" fill="#64748b">8 curated question-to-SQL examples</text></g>
+<rect x="470" y="240" width="400" height="110" rx="8" fill="#fff" stroke="#94a3b8" stroke-dasharray="5"/>
+<text x="670" y="265" text-anchor="middle" font-weight="bold" fill="#475569">schema_index v1 (aibi_text_to_sql_gen)</text>
+<text x="485" y="292" fill="#1e293b">id, table_name, schema_metadata (keyword only)</text><text x="485" y="314" fill="#1e293b">No vectors; fuzzy full-Lucene search (term~)</text><text x="485" y="336" font-size="12" fill="#64748b">2 docs: employee, department</text>
+</svg>
